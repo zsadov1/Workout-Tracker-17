@@ -1,30 +1,28 @@
-  
 const express = require("express");
+
+// do we need this? not sure yet
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const path = require("path");
 
-const PORT = process.env.PORT || 3003;
-
-const db = require("./models");
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
 app.use(logger("dev"));
-app.use(express.static("public"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(express.static("public"));
+app.use(require("./routes/apiroutes.js"));
+app.use(require("./routes/htmlroutes.js"));
 
-
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {useNewUrlParser: true});
-
-app.get("/stats", (req,res)=> {
-    res.sendFile(path.join(__dirname, "public/stats.html"));
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutdb", {
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true
 });
 
-app.get("/api/workouts", (req,res) => {
-
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}!`);
 });
-
