@@ -1,6 +1,6 @@
 const express = require("express");
 
-// do we need this? not sure yet
+
 const logger = require("morgan");
 const mongoose = require("mongoose");
 
@@ -14,8 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static("public"));
-app.use(require("./routes/apiroutes.js"));
-app.use(require("./routes/htmlroutes.js"));
+app.use(require("./Develop/routes/apiroutes"));
+app.use(require("./Develop/routes/htmlroutes"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutdb", {
   useNewUrlParser: true,
