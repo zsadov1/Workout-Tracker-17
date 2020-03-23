@@ -28,7 +28,7 @@ npm start
 
 ## Credits
 
-- Files in the "public" and "seeders" folders were provided by the University of Richmond Coding Bootcamp, but I did modify them.
+- Files provided the University of Richmond Coding Bootcamp
 
 ## License
 
