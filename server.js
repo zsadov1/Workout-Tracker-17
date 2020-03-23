@@ -1,3 +1,4 @@
+
 const express = require("express");
 
 
@@ -14,8 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static("public"));
-app.use(require("./Develop/routes/apiroutes"));
-app.use(require("./Develop/routes/htmlroutes"));
+app.use(require("./routes/apiroutes"));
+app.use(require("./routes/htmlroutes"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutdb", {
   useNewUrlParser: true,
